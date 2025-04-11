@@ -1,0 +1,15 @@
+{% extends "accounts/base.html" %}
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">Transfer Funds</h2>
+<form method="get">
+    <label>Sender:</label>
+    <input type="text" name="sender" class="input" required><br><br>
+    <label>Receiver:</label>
+    <input type="text" name="receiver" class="input" required><br><br>
+    <label>Amount:</label>
+    <input type="number" name="amount" class="input" required><br><br>
+    <label>Timestamp (optional):</label>
+    <input type="number" name="timestamp" class="input"><br><br>
+    <button type="submit" class="btn">Transfer</button>
+</form>
+{% endblock %}

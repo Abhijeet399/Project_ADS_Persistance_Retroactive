@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Retroactive Banking</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        input[type="text"],
+        input[type="number"] {
+          width: 100%;
+          padding: 10px;
+          margin-top: 6px;
+          margin-bottom: 12px;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          box-sizing: border-box;
+          font-size: 16px;
+          transition: border-color 0.3s ease;
+        }
+      
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+          border-color: #4f46e5; /* Tailwind indigo-600 */
+          outline: none;
+        }
+      
+        label {
+          font-weight: 600;
+        }
+      
+        form {
+          max-width: 400px;
+          margin: 0 auto;
+        }
+      
+        button,
+        input[type="submit"] {
+          background-color: #4f46e5;
+          color: white;
+          padding: 10px 16px;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 16px;
+          transition: background-color 0.3s ease;
+        }
+      
+        button:hover,
+        input[type="submit"]:hover {
+          background-color: #4338ca;
+        }
+      </style>
+      
+</head>
+<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col items-center py-8">
+    <header class="w-full max-w-4xl mb-8">
+        <h1 class="text-3xl font-bold text-center mb-4">💰 Retroactive Banking System</h1>
+        <nav class="flex justify-center space-x-4 text-blue-600">
+            <a href="/" class="hover:underline">Home</a>
+            <a href="/create/" class="hover:underline">Create Account</a>
+            <a href="/deposit/" class="hover:underline">Deposit</a>
+            <a href="/withdraw/" class="hover:underline">Withdraw</a>
+            <a href="/transfer/" class="hover:underline">Transfer</a>
+            <a href="/rollback/" class="hover:underline">Rollback</a>
+            <a href="/balances/" class="hover:underline">View Balances</a>
+        </nav>
+    </header>
+
+    <main class="w-full max-w-xl bg-white shadow-md rounded-lg p-6">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
