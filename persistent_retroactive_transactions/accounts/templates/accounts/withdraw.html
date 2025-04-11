@@ -1,0 +1,13 @@
+{% extends "accounts/base.html" %}
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">Withdraw</h2>
+<form method="get">
+    <label>Account Name:</label>
+    <input type="text" name="name" class="input" required><br><br>
+    <label>Amount:</label>
+    <input type="number" name="amount" class="input" required><br><br>
+    <label>Timestamp (optional):</label>
+    <input type="number" name="timestamp" class="input"><br><br>
+    <button type="submit" class="btn">Withdraw</button>
+</form>
+{% endblock %}

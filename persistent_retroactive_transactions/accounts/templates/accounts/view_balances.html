@@ -1,0 +1,25 @@
+{% extends "accounts/base.html" %}
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">View Balances</h2>
+<form method="get" class="mb-4">
+    <label>Version (timestamp):</label>
+    <input type="number" name="version" value="{{ version }}" class="input">
+    <button type="submit" class="btn">View</button>
+</form>
+<table class="w-full table-auto border">
+    <thead>
+        <tr class="bg-gray-200">
+            <th class="px-4 py-2 border">Account</th>
+            <th class="px-4 py-2 border">Balance at t={{ version }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for acc in balances %}
+        <tr>
+            <td class="border px-4 py-2">{{ acc.name }}</td>
+            <td class="border px-4 py-2">{{ acc.balance }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

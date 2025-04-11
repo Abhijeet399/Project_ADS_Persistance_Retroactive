@@ -1,0 +1,57 @@
+# Retroactive Banking System
+
+A Django web application that demonstrates a **retroactive banking system**, allowing you to create accounts, deposit, withdraw, transfer funds, and even **insert or delete operations retroactively** by timestamp.
+
+> Built with: `Python`, `Django`, `HTML/CSS`
+
+---
+
+## Features
+
+- Create multiple accounts with initial balances
+- Deposit, Withdraw, and Transfer funds
+- Add operations retroactively by specifying a timestamp
+- Rollback specific operations based on timestamp and type
+- View balances at any specific point in time (version/timestamp)
+- Simple web interface with styled HTML forms
+
+---
+
+## Usage
+
+python manage.py runserver
+
+
+## Test Usecase
+
+Perform the following steps via the web interface:
+
+Create accounts:
+    - Create siva with balance 120 at t0
+    - Create msk with balance 520 at t1
+
+Deposit to siva:
+    - Deposit 120 to siva at t2
+
+Withdraw from msk:
+    - Withdraw 30 from msk at t3
+
+Transfer:
+    - Transfer 50 from msk to siva at t4
+
+Retroactive Operation:
+    - Withdraw 50 from siva at t2 (retroactively)
+
+View Balance:
+    - Go to View Balances and enter timestamp 2
+
+You should see:
+    - siva: 120 (initial) + 120 (deposit) - 50 (withdraw) = 190
+    - msk: 520 (no change by t2) = 520
+
+Rollback a specific operation:
+Enter:
+    - Timestamp: 2
+    - Operation: withdraw
+
+This will undo only the withdraw operation at t2 without touching future operations.

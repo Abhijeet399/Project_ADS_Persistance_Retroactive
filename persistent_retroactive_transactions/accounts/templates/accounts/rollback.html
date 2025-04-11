@@ -1,0 +1,21 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<div class="card">
+    <h2 class="text-xl font-bold mb-4">Rollback Operation</h2>
+    <form method="get">
+        <label for="timestamp" class="block">Timestamp:</label>
+        <input type="number" name="timestamp" required class="input-field">
+
+        <label for="operation_type" class="block mt-2">Operation Type:</label>
+        <select name="operation_type" class="input-field">
+            <option value="create">Create</option>
+            <option value="deposit">Deposit</option>
+            <option value="withdraw">Withdraw</option>
+            <option value="transfer">Transfer</option>
+        </select>
+
+        <button type="submit" class="btn mt-4">Rollback</button>
+    </form>
+</div>
+{% endblock %}
