@@ -27,27 +27,27 @@ python manage.py runserver
 Perform the following steps via the web interface:
 
 Create accounts:
-    - Create siva with balance 120 at t0
-    - Create msk with balance 520 at t1
+    - Create user1 with balance 120 at t0
+    - Create user2 with balance 520 at t1
 
-Deposit to siva:
-    - Deposit 120 to siva at t2
+Deposit to user1:
+    - Deposit 120 to user1 at t2
 
-Withdraw from msk:
-    - Withdraw 30 from msk at t3
+Withdraw from user2:
+    - Withdraw 30 from user2 at t3
 
 Transfer:
-    - Transfer 50 from msk to siva at t4
+    - Transfer 50 from user2 to user1 at t4
 
 Retroactive Operation:
-    - Withdraw 50 from siva at t2 (retroactively)
+    - Withdraw 50 from user1 at t2 (retroactively)
 
 View Balance:
     - Go to View Balances and enter timestamp 2
 
 You should see:
-    - siva: 120 (initial) + 120 (deposit) - 50 (withdraw) = 190
-    - msk: 520 (no change by t2) = 520
+    - user1: 120 (initial) + 120 (deposit) - 50 (withdraw) = 190
+    - user2: 520 (no change by t2) = 520
 
 Rollback a specific operation:
 Enter:
