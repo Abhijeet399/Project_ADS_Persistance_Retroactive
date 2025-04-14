@@ -1,4 +1,4 @@
-class PersistentQueue:
+class PartialPersistenceQueue:
     def __init__(self):
         self.versions = [[]] 
         self.currentVersion = 0
@@ -27,7 +27,7 @@ class PersistentQueue:
             return
         print(f"Queue (Version {version}): {self.versions[version]}")
         
-pq = PersistentQueue()
+pq = PatialPersistenceQueue()
 pq.enqueue(10)
 pq.enqueue(20)
 pq.dequeue()
