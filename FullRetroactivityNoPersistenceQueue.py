@@ -1,4 +1,4 @@
-class RetroactivityNoPersistenceQueue:
+class FullRetroactivityNoPersistenceQueue:
     def __init__(self):
         self.versions = {0: []}
         self.currentVersion = 0
@@ -52,7 +52,7 @@ class RetroactivityNoPersistenceQueue:
             return
         print(f"Queue (t = {timestamp}): {self.getQueueAtTimestamp(timestamp)}")
 
-rq = RetroactivityNoPersistenceQueue()
+rq = FullRetroactivityNoPersistenceQueue()
 rq.enqueue(10)    # t=0: [10]
 rq.enqueue(20)    # t=1: [10, 20]
 rq.enqueue(30)    # t=2: [10, 20, 30]
