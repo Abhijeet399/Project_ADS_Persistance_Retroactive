@@ -27,7 +27,7 @@ class PartialPersistenceQueue:
             return
         print(f"Queue (Version {version}): {self.versions[version]}")
         
-pq = PatialPersistenceQueue()
+pq = PartialPersistenceQueue()
 pq.enqueue(10)
 pq.enqueue(20)
 pq.dequeue()
