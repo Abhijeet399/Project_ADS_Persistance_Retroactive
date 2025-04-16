@@ -113,4 +113,13 @@ class ModifiedPersistentRetroactiveQueue:
 
               
 q = ModifiedPersistentRetroactiveQueue()
+q.enqueue(10, 0)
+q.enqueue(20, 1)
+q.enqueue(30, 2)
+q.enqueue(40, 3)
+q.enqueue(15, 0)
+q.enqueue(25, 0)
+q.dequeue(3)
+q.enqueue(35, 1)
+q.dequeue(2)
 print("State at version 4:", q.get_state_at_version(4))
