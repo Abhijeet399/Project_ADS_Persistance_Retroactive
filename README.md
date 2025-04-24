@@ -376,6 +376,54 @@ However, please note that:
 - Save the script (via git clone or manual save) and run it directly:
 
   - `python3 ModifiedPersistentRetroactiveQueue.py`
+## **Modified Persistent Retroactive Queue with Version Control**
+
+This program implements a **Modified Persistent Retroactive Queue** with a more detailed and advanced structure. It uses **timestamped nodes** to record operations and build queue state over time. It supports both **persistent** and **retroactive** features, with the ability to trace or reconstruct the queue state at specific **timestamps or versions**.
+
+Similar to the preceding implementation it allows enqueue and dequeue at any specified timestamp and stores nodes with full modification history (enqueue and dequeue mods). We still maintain both **forward and back pointers** between nodes to represent the evolution of the queue and support viewing queue state at any **timestamp** or **version**. We used **deep copy** to maintain version history.
+
+**Features**
+
+- **`\_get_or_create_node(timestamp)`**
+
+  - Returns the existing node at timestamp, or creates a new one while maintaining forward/back pointers to adjacent nodes.
+
+- **`enqueue(value, timestamp=None)`**
+
+  - Inserts a value at the specified timestamp. If not provided, the current version timestamp is used.
+
+- **`dequeue(timestamp=None)`**
+
+  - Removes the front element at the specified timestamp. Uses queue state before that time to determine what to remove.
+
+- **`get_state_at_timestamp(timestamp)`**
+
+  - Returns the queue's state after applying all modifications up to the given timestamp.
+
+- **`get_state_at_version(version_number)`**
+
+  - Returns the state of the queue after a specific operation version.
+
+- **`print_queue_structure()`**
+  - Debug function to show internal node data, modifications, and pointers for each timestamped node.
+
+### **Requirements**
+
+- Python 3.6 or higher
+
+- Uses the following standard libraries:
+
+  - bisect for efficient sorted insertions
+
+  - collections.deque for fast front-element removals
+
+  - copy for deep-copying node state
+
+### **Running the Program**
+
+- Save the script (via git clone or manual save) and run it directly:
+
+  - `python3 ModifiedPersistentRetroactiveQueueVersions.py`
 
 ## **Partial Persistence Stacks (Java)**
 
@@ -391,7 +439,7 @@ This project implements a **partially persistent stack** in Java, allowing users
 
   - Removes and returns the top element from the stack, creating a new version afterward.
 
-- **`copyStack(Node\<T\> top)`**
+- **`copyStack(Node<T> top)`**
 
   - Creates a deep copy of the stack starting from the given top node. Used to persist past versions.
 
@@ -403,7 +451,7 @@ This project implements a **partially persistent stack** in Java, allowing users
 
   - Returns the top node of the stack at the specified version number.
 
-- **`printStack(Node\<T\> top)`**
+- **`printStack(Node<T> top)`**
   - Prints the contents of the stack from the given top node down to the bottom.
 
 ### **Requirements**
@@ -519,9 +567,9 @@ The backend is powered by a custom **PersistentRetroactiveAccountSystem** class 
 
 You should see:
 
-- `**user1**: 120 (initial) + 120 (deposit) - 50 (withdraw) = 190`
+- `user1: 120 (initial) + 120 (deposit) - 50 (withdraw) = 190`
 
-- `**user2**: 520 (no change by t2) = 520`
+- `user2: 520 (no change by t2) = 520`
 
 **Rollback a specific operation**:
 
