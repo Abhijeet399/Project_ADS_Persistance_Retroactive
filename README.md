@@ -287,3 +287,50 @@ The file contains the full implementation and usage demo.
 
 - **Run it**:
   - `python3 FullPersistenceQueue.py`
+## **Fully Retroactive Queue (No Persistence)**
+
+This Python implementation demonstrates a **fully retroactive queue** that allows insertion and deletion operations to be performed at **any past timestamp**, with all future versions automatically updated to reflect the change. However, it **doesn’t keep track of old versions of the queue**, meaning each timestamp points to only one version of the queue.
+
+=> Retroactive edits can alter the state of the queue at future timestamps and versions are not immutable so the structure reflects only one version per timestamp.
+
+### **Features**
+
+- **`enqueue(value, timestamp=None)`**
+
+  - Adds an element to the queue at a specific timestamp.
+
+  - All following timestamps get updated.
+
+  - Defaults to appending at the latest version if no timestamp is provided.
+
+- **`dequeue(timestamp=None)`**
+
+  - Removes the front element of the queue at the given timestamp.
+
+  - Like enqueue, updates all future versions accordingly.
+
+- **`printQueue(timestamp)`**
+
+  - Prints the queue contents at the given timestamp.
+
+  - Handles nonexistent timestamps gracefully.
+
+- **`getQueueAtTimestamp(timestamp)`**
+
+  - Retrieves the queue as it was at or before the given timestamp.
+
+### **Requirements**
+
+- **Python 3.6+**
+
+- Pure Python, no external libraries required.
+
+### **Running the Program**
+
+- **Clone the repository (or save the file)**
+
+  - `git clone https://github.com/Abhijeet399/Project_ADS_Persistance_Retroactive.git`
+
+- **Run it**:
+
+  - `python FullRetroactivityNoPersistenceQueue.py`
