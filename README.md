@@ -384,7 +384,7 @@ Similar to the preceding implementation it allows enqueue and dequeue at any spe
 
 **Features**
 
-- **`\_get_or_create_node(timestamp)`**
+- **`get_or_create_node(timestamp)`**
 
   - Returns the existing node at timestamp, or creates a new one while maintaining forward/back pointers to adjacent nodes.
 
