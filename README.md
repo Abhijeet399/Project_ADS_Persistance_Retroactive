@@ -124,7 +124,7 @@ This generic class supports the following operations:
  
  ### **Requirements**
  
- - **Python 3.6+**
+ - **Python 3.6 or higher**
  
  - Uses only Python standard features, no extra packages required
  
@@ -161,7 +161,7 @@ This generic class supports the following operations:
  
  ### **Requirements**
  
- - **Python 3.6+**
+ - **Python 3.6 or higher**
  
  - No third-party libraries needed
  
@@ -212,7 +212,7 @@ This generic class supports the following operations:
  
  ### **Requirements**
  
- - **Python 3.6+**
+ - **Python 3.6 or higher**
  
  - Uses built-in uuid and copy functionality. No external libraries are required.
  
@@ -258,7 +258,7 @@ This generic class supports the following operations:
  
  ### **Requirements**
  
- - **Python 3.6+**
+ - **Python 3.6 or higher**
  
  - Pure Python, no external libraries required.
  
@@ -307,7 +307,7 @@ A fully retroactive queue with full operation logging and rebuild-on-demand beha
 
 ### **Requirements**
 
-- **Python 3.6+**
+- **Python 3.6 or higher**
 
 - No third-party dependencies. Runs with the standard library.
 
@@ -369,7 +369,7 @@ However, please note that:
   - Prints the internal structure, including enqueue/dequeue mods and forward/backward time links.
 ### **Requirements**
 
-- **Python 3.6+**
+- **Python 3.6 or higher**
 
 ### **Running the Program**
 
