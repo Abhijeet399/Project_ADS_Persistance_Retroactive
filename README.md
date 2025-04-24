@@ -91,7 +91,7 @@ This generic class supports the following operations:
 
 - **Clone the Repository**
 
-  - git clone [[https://github.com/Abhijeet399/Project_ADS_Persistance_Retroactive.git]](https://github.com/Abhijeet399/Project_ADS_Persistance_Retroactive.git)
+  - `git clone https://github.com/Abhijeet399/Project_ADS_Persistance_Retroactive.git`
 
 - **Compile both Java files**:
 
@@ -100,3 +100,136 @@ This generic class supports the following operations:
 - **Run the main program**:
 
   - `java Partial_persistance_Queues.Client`
+## **Persistent Queue in Java**
+
+The persistence is **partial**, meaning you can access and print any previous version, but modifications are only applied to the latest one. Each operation (enqueue/dequeue) increments the version count, maintaining a copy of the queue at that point in time.
+
+**PersistentQueue.java** has the core data structure implementation.
+
+**Client.java** is a sample driver code to demonstrate usage.
+
+### **Features**
+
+**PersistentQueue\<T\>**
+
+This generic class supports the following operations:
+
+- **`enqueue(T value)`**
+
+  - Adds an element to the end of the queue.
+
+  - Creates a new version of the queue.
+
+- **`dequeue()`**
+
+  - Removes the element at the front of the queue.
+
+  - Creates a new version.
+
+  - Handles empty queues.
+
+- **`printQueue(int version)`**
+
+  - Prints the queue content at a specific version.
+
+  - If the version doesn\'t exist, a warning is shown.
+
+- **`getCurrentVersion()`**
+
+  - Returns the latest version number of the queue.
+
+**Client**
+
+- Demonstrates the application of PersistentQueue by performing a sequence of operations.
+
+- Useful if you want to test and understand the behavior of the persistent queue.
+
+### **Requirements**
+
+- **Java 8 or higher**
+
+- No external libraries or frameworks needed but you can use a Java IDE of your preference.
+
+### **Running the Project**
+
+- **Clone the Repository**
+
+  - `git clone https://github.com/Abhijeet399/Project_ADS_Persistance_Retroactive.git`
+
+- **Compile both Java files**:
+
+  - `javac Partial_persistance_Queues/PersistentQueue.java Partial_persistance_Queues/Client.java`
+
+- **Run the main program**:
+
+  - `java Partial_persistance_Queues.Client`
+
+## **Partial Persistence Queue in Python**
+
+This program is the same as the Java version but in Python for Python lovers. It shows a **partially persistent queue**. In a similar manner, modifications (enqueue and dequeue) can only be made at the **latest version**, but you can access and view any previous version of the queue at any time.
+
+### **Features**
+
+- **`enqueue(value)`**
+
+  - Adds a new value to the end of the queue and creates a new version.
+
+- **`dequeue()`**
+
+  - Removes the element from the front of the queue (if not empty) and creates a new version.
+
+- **`getLatestQueue()`**
+
+  - Returns the queue at the current (latest) version.
+
+- **`printQueue(version`**
+  - Prints the state of the queue at a specified version. If the version doesn't exist, it prints a warning.
+
+### **Requirements**
+
+- **Python 3.6** or higher
+
+- Uses only Python standard features, no extra packages required
+
+### **Running the Program**
+
+- Save the script (via git clone or manual save) and run it directly:
+
+    - `python3 PartialPersistenceQueue.py`
+
+## **Partial Retroactivity Queue**
+
+This program implements a **partially retroactive queue**. It allows inserting enqueue or dequeue operations not only at the end of the operation timeline, but also at **any point in the past**. After each change, the queue is rebuilt to reflect the retroactive effect.
+
+### **Features**
+
+- **`enqueue(value, t=None)`**
+
+  - Inserts the given value into the queue. If t is not provided, it adds the operation at the end of the current timeline.
+
+- **`dequeue(t=None)`**
+
+  - Removes the element at the front of the queue. If t is not provided, it dequeues at the end of the current timeline. Otherwise, it applies the dequeue at the specified timestamp.
+
+- **`insert_operation(op_type, value, t)`**
+
+  - Helper method to insert either enqueue or dequeue operation into the operations list. Maintains timestamp and order.
+
+- **`build_queue()`**
+
+  - Rebuilds the queue from scratch using the sorted list of operations.
+
+- **getLatestQueue()**
+  - Returns the most recent state of the queue after applying all retroactive operations.
+
+### **Requirements**
+
+- **Python 3.6** or above
+
+- No third-party libraries needed
+
+### **Running the Program**
+
+- Save the script (via git clone or manual save) and run it directly:
+
+  - `python3 PartialRetroactivityQueue.py`
