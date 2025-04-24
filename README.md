@@ -233,3 +233,57 @@ This program implements a **partially retroactive queue**. It allows inserting e
 - Save the script (via git clone or manual save) and run it directly:
 
   - `python3 PartialRetroactivityQueue.py`
+## **(Somewhat) Full Persistent Queue in Python**
+
+This implementation is for an almost fully persistent queue, a data structure where every version is immutable and can serve as the base for new versions which can allow us to branch histories and logical timestamp allows multiple versions to coexist. 
+
+Each version is uniquely identified using a UUID and is stored with a logical timestamp, parent version, and the queue's state. 
+
+Note that the UUIDs are dynamically generated, so they'll differ each time you run the code and that the version history can branch at any point.
+
+The file contains the full implementation and usage demo.
+
+- **`enqueue(value, timestamp=None, base_version=None)`**
+
+  - Adds an element to the end of the queue.
+
+  - Creates a new version ID.
+
+  - Supports specifying a custom base version and timestamp, enabling branching.
+
+- **`dequeue(timestamp=None, base_version=None)`**
+
+  - Removes the element at the front of the queue.
+
+  - Creates a new version ID from a specified base version.
+
+  - Also handles empty queues.
+
+- **`print_queue(version_id=None)`**
+
+  - Prints the queue contents at a specific version.
+
+  - If no version is given, defaults to the latest version.
+
+- **`get_queue_by_version(version_id)`**
+
+  - Returns the queue as a list for the given version ID.
+
+- **`get_versions_at_timestamp(timestamp)`**
+
+  - Returns a list of all version IDs associated with a given logical timestamp.
+
+### **Requirements**
+
+- **Python 3.6+**
+
+- Uses built-in uuid and copy functionality. No external libraries are required.
+
+### **Running the Program**
+
+- **Clone the repo (or save the file)**
+
+  - `git clone https://github.com/Abhijeet399/Project_ADS_Persistance_Retroactive.git`
+
+- **Run it**:
+  - `python3 FullPersistenceQueue.py`
