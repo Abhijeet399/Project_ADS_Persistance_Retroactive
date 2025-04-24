@@ -615,13 +615,12 @@ State at version 9: [30, 30, 40, 40] # Incorrect we've got duplicates & missing 
 
 **Expected Output**
 
-**Final queue after all operations (merged with later dequeue ops):**
-
 ```
 Start with [10, 15, 25, 20, 35, 30, 40]
 Apply dequeues from version 8 (in order):
 Dequeue 1: removes 10
 Dequeue 2: removes 15
+Final queue after all operations (merged with later dequeue ops):
 Final result with deque: [25, 20, 35, 30, 40]
 
 Final queue after all enqueue operations (merged without later dequeue ops):
