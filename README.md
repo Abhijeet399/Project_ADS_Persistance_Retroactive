@@ -392,3 +392,252 @@ However, please note that:
 - Save the script (via git clone or manual save) and run it directly:
 
   - `python3 ModifiedPersistentRetroactiveQueue.py`
+
+## **Partial Persistence Stacks (Java)**
+
+This project implements a **partially persistent stack** in Java, allowing users to access past versions of the stack while continuing to make changes in the present. It supports operations like push, pop, and viewing the state of the stack at any previous version. The persistent nature of the stack is managed internally using versioned references.
+
+### **Features**
+
+- **`push(T data)`**
+
+  - Adds an element to the top of the stack and saves the new version.
+
+- **`pop()`**
+
+  - Removes and returns the top element from the stack, creating a new version afterward.
+
+- **`copyStack(Node\<T\> top)`**
+
+  - Creates a deep copy of the stack starting from the given top node. Used to persist past versions.
+
+- **`makePersistent(T data)`**
+
+  - Creates a new Persistance_Stacks object based on the current stack, pushes the new data, and returns the new stack.
+
+- **`getVersion(int version)`**
+
+  - Returns the top node of the stack at the specified version number.
+
+- **`printStack(Node\<T\> top)`**
+  - Prints the contents of the stack from the given top node down to the bottom.
+
+### **Requirements**
+
+- Java Development Kit (JDK) 8 or higher
+
+### **Running the program**
+
+- `git clone https://github.com/Abhijeet399/Project_ADS_Persistance_Retroactive.git`
+
+- `cd Partial_Persistance_Stacks`
+
+- **Compile the files**:
+
+  - `javac Partial_Persistance_Stacks/\*.java`
+
+- **Run the program**:
+  - `java Partial_Persistance_Stacks.Client\$Main`
+
+Note: Client\$Main is required because Main is a nested class inside Client.
+
+## **Persistent Retroactive Banking System**
+
+This is a Django-based web application that simulates a fully retroactive and partially persistent banking system. It allows users to:
+
+- Create accounts with an initial balance
+
+- Perform **deposits**, **withdrawals**, and **transfers**
+
+- Add operations retroactively by specifying a timestamp
+
+- View balances at any past version (timestamp)
+
+- Retroactively **insert** or **rollback** operations by timestamp and type
+
+The backend is powered by a custom **PersistentRetroactiveAccountSystem** class that simulates partial persistence and partial retroactivity in memory.
+
+### **Implementation**
+
+- **Backend Class:** PersistentRetroactiveAccountSystem
+
+- Keeps an operations list of tuples: (timestamp, operation_type, data)
+
+- All operations (create, deposit, withdraw, transfer, rollback) are versioned.
+
+- Balances are recalculated using historical simulation (get_balance()).
+
+- Rollback removes only the specified operation.
+
+### **Web Interface**
+
+- Built using Django
+
+- Views handle GET requests with optional timestamps
+
+- Balances are dynamically computed using versioned history
+
+### **Steps to Import and run the application**
+
+- **Clone the Repository**
+
+  - `git clone https://github.com/Abhijeet399/Project_ADS_Persistance_Retroactive.git`
+
+  - `cd persistent-retroactive-transactions`
+
+- **Installation Instructions**
+
+  - Manually install Django: `pip install Django` (preferably version \>=4)
+
+- **Run the Web Application**
+
+  - _Run Migrations_
+
+    python manage.py migrate
+
+  - _Start the Development Server_
+
+    python manage.py runserver
+
+  - _Access the App_
+
+    Open a browser and go to:
+
+    http://127.0.0.1:8000/
+
+### **Sample Use Case to Try**
+
+- **Create accounts**:
+
+  - Create user1 with a balance of 120 at t0
+
+  - Create user2 with a balance of 520 at t1
+
+- **Deposit to user1**:
+
+  - Deposit 120 to user1 at t2
+
+- **Withdraw from user2**:
+
+  - Withdraw 30 from user2 at t3
+
+- **Transfer**:
+
+  - Transfer 50 from user2 to user1 at t4
+
+- **Retroactive Operation**:
+
+  - Withdraw 50 from user1 at t2 (retroactively)
+
+- **View Balance**:
+
+  - Go to View Balances and enter timestamp 2
+
+You should see:
+
+- `**user1**: 120 (initial) + 120 (deposit) - 50 (withdraw) = 190`
+
+- `**user2**: 520 (no change by t2) = 520`
+
+**Rollback a specific operation**:
+
+Enter:
+
+- `Timestamp: 2`
+
+- `Operation: withdraw`
+
+This will undo only the **withdraw operation at t2** without touching future operations.
+
+## **Modified Persistent Retroactive Queue (Experimental Merge Version)**
+
+This Python program implements a Modified Persistent Retroactive Queue just like seen previously, supporting advanced retroactive queue operations and version tracking. It allows retroactive enqueue and dequeue operations, as well as viewing the queue\'s state at any version or timestamp but it also attempts to provide a **merge feature** to combine two historical versions into a new one.
+
+### **Status**
+
+**Remains In Progress -- Merge Functionality Under Development!!!**
+
+### **Features**
+
+- Supports retroactive insertions/removals via timestamped nodes.
+
+- Maintains a versioned history of the queue using deep copies.
+
+- Tracks modifications (enqueue_mods, dequeue_mods) at each timestamped node.
+
+- Allows querying queue state at any version or timestamp.
+
+- Includes a merge function to combine operations from two versions.
+
+### **Example**
+
+```
+State at version 8: [25, 20, 35, 30, 40]
+
+State at version 4: [10, 15, 20, 30, 40]
+
+Merged version created at index 9
+
+State at version 9: [30, 30, 40, 40] # Incorrect we've got duplicates & missing elements
+```
+
+**Expected Output**
+
+**Final queue after all operations (merged with later dequeue ops):**
+
+```
+Start with [10, 15, 25, 20, 35, 30, 40]
+Apply dequeues from version 8 (in order):
+Dequeue 1: removes 10
+Dequeue 2: removes 15
+Final result with deque: [25, 20, 35, 30, 40]
+
+Final queue after all enqueue operations (merged without later dequeue ops):
+Final result: [10, 15, 25, 20, 35, 30, 40]
+```
+
+### **Issues**
+
+- Incorrectly merged node operations without properly considering their timestamps and sequence
+
+- Failed to properly track which items should be dequeued
+
+- In our merge function, we were trying to use sets to eliminate duplicate pointers, but Node objects can\'t be properly compared that way.
+
+- After merging two versions, the pointers need to be reconstructed to maintain the correct linked structure.
+
+- When making deep copies, the pointers are referring to the old Node objects, not the newly created ones in the merged version.
+
+### **Requirements**
+
+- Python 3.6 or higher
+
+- Uses the following standard libraries:
+
+  - bisect for efficient sorted insertions
+
+  - collections.deque for fast front-element removals
+
+  - copy for deep-copying node state
+
+### **Next Steps / To-Do**
+
+- Perhaps removing the retroactive aspect to simplify the merging of the versions.
+
+- Refactor merge_versions() to:
+
+  - Properly merge operations in correct chronological order.
+
+  - Avoid duplicates and restore queue semantics.
+
+  - Correctly rebuild pointer references across merged nodes.
+
+- Separate mod merging from pointer management for clarity.
+
+- Introduce unit tests to validate correctness of versions and merge output.
+
+## **License**
+
+This project is open-source and provided for educational purposes. You are welcome to participate and collaborate with us to improve this!
+
+(Credits are appreciated 🙂)
