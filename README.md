@@ -124,7 +124,7 @@ This generic class supports the following operations:
  
  ### **Requirements**
  
- - **Python 3.6 or higher**
+ - **Python 3.6+**
  
  - Uses only Python standard features, no extra packages required
  
@@ -156,12 +156,12 @@ This generic class supports the following operations:
  
    - Rebuilds the queue from scratch using the sorted list of operations.
  
- - **getLatestQueue()**
+ - **`getLatestQueue()`**
    - Returns the most recent state of the queue after applying all retroactive operations.
  
  ### **Requirements**
  
- - **Python 3.6 or higher**
+ - **Python 3.6+**
  
  - No third-party libraries needed
  
@@ -212,7 +212,7 @@ This generic class supports the following operations:
  
  ### **Requirements**
  
- - **Python 3.6 or higher**
+ - **Python 3.6+**
  
  - Uses built-in uuid and copy functionality. No external libraries are required.
  
@@ -226,7 +226,7 @@ This generic class supports the following operations:
    - `python3 FullPersistenceQueue.py`
  ## **Fully Retroactive Queue (No Persistence)**
  
- This Python implementation demonstrates a **fully retroactive queue** that allows insertion and deletion operations to be performed at **any past timestamp**, with all future versions automatically updated to reflect the change. However, it **doesn’t keep track of old versions of the queue**, meaning each timestamp points to only one version of the queue.
+ This implementation demonstrates a **fully retroactive queue** that allows insertion and deletion operations to be performed at **any past timestamp**, with all future versions automatically updated to reflect the change. However, it **doesn’t keep track of old versions of the queue**, meaning each timestamp points to only one version of the queue.
  
  => Retroactive edits can alter the state of the queue at future timestamps and versions are not immutable so the structure reflects only one version per timestamp.
  
@@ -250,7 +250,7 @@ This generic class supports the following operations:
  
    - Prints the queue contents at the given timestamp.
  
-   - Handles nonexistent timestamps gracefully.
+   - Handles nonexistent timestamps.
  
  - **`getQueueAtTimestamp(timestamp)`**
  
@@ -258,7 +258,7 @@ This generic class supports the following operations:
  
  ### **Requirements**
  
- - **Python 3.6 or higher**
+ - **Python 3.6+**
  
  - Pure Python, no external libraries required.
  
@@ -307,7 +307,7 @@ A fully retroactive queue with full operation logging and rebuild-on-demand beha
 
 ### **Requirements**
 
-- **Python 3.6 or higher**
+- **Python 3.6+**
 
 - No third-party dependencies. Runs with the standard library.
 
@@ -369,7 +369,7 @@ However, please note that:
   - Prints the internal structure, including enqueue/dequeue mods and forward/backward time links.
 ### **Requirements**
 
-- **Python 3.6 or higher**
+- **Python 3.6+**
 
 ### **Running the Program**
 
@@ -384,7 +384,7 @@ Similar to the preceding implementation it allows enqueue and dequeue at any spe
 
 **Features**
 
-- **`get_or_create_node(timestamp)`**
+- **`_get_or_create_node(timestamp)`**
 
   - Returns the existing node at timestamp, or creates a new one while maintaining forward/back pointers to adjacent nodes.
 
@@ -409,7 +409,7 @@ Similar to the preceding implementation it allows enqueue and dequeue at any spe
 
 ### **Requirements**
 
-- Python 3.6 or higher
+- **Python 3.6+** 
 
 - Uses the following standard libraries:
 
@@ -583,7 +583,7 @@ This will undo only the **withdraw operation at t2** without touching future ope
 
 ## **Modified Persistent Retroactive Queue (Experimental Merge Version)**
 
-This Python program implements a Modified Persistent Retroactive Queue just like seen previously, supporting advanced retroactive queue operations and version tracking. It allows retroactive enqueue and dequeue operations, as well as viewing the queue\'s state at any version or timestamp but it also attempts to provide a **merge feature** to combine two historical versions into a new one.
+This  program implements a Modified Persistent Retroactive Queue just like seen previously, supporting advanced retroactive queue operations and version tracking. It allows retroactive enqueue and dequeue operations, as well as viewing the queue's state at any version or timestamp but it also attempts to provide a **merge feature** to combine two historical versions into a new one.
 
 ### **Status**
 
@@ -634,7 +634,7 @@ Final result: [10, 15, 25, 20, 35, 30, 40]
 
 - Failed to properly track which items should be dequeued
 
-- In our merge function, we were trying to use sets to eliminate duplicate pointers, but Node objects can\'t be properly compared that way.
+- In our merge function, we were trying to use sets to eliminate duplicate pointers, but Node objects can't be properly compared that way.
 
 - After merging two versions, the pointers need to be reconstructed to maintain the correct linked structure.
 
@@ -642,7 +642,7 @@ Final result: [10, 15, 25, 20, 35, 30, 40]
 
 ### **Requirements**
 
-- Python 3.6 or higher
+- **Python 3.6+**
 
 - Uses the following standard libraries:
 
@@ -672,4 +672,4 @@ Final result: [10, 15, 25, 20, 35, 30, 40]
 
 This project is open-source and provided for educational purposes. You are welcome to participate and collaborate with us to improve this!
 
-(Credits are appreciated 🙂)
+(Credits are appreciated ^-^)
