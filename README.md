@@ -14,9 +14,9 @@ So in this project we attempted to introduce persistence and retroactivity to qu
 * **Full Retroactivity**: You can insert or delete past operations and also **query any past version** as if history was always that way.
 
 ### **Useful Resources**
-(https://courses.csail.mit.edu/6.851/fall17/scribe/lec1.pdf)
+https://courses.csail.mit.edu/6.851/fall17/scribe/lec1.pdf
 
-(https://erikdemaine.org/papers/Retroactive_TALG/paper.pdf)
+https://erikdemaine.org/papers/Retroactive_TALG/paper.pdf
 
 ## The Repository’s Structure
 Our repo has different folders and files as follows:
