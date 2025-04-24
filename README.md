@@ -667,6 +667,13 @@ Final result: [10, 15, 25, 20, 35, 30, 40]
 
 - Introduce unit tests to validate correctness of versions and merge output.
 
+## **(Some) Challenges Faced**
+**In no particular order we found it difficult to:**
+- Updating the pointers  efficiently and correctly
+- Keep track of every update without taking space and time
+- Shuffle between versions and timestamps
+- Adapting Persistence and Retroactive data structures to the use case
+
 ## **License**
 
 This project is open-source and provided for educational purposes. You are welcome to participate and collaborate with us to improve this!
