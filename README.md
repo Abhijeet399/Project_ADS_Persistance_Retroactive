@@ -333,4 +333,4 @@ This Python implementation demonstrates a **fully retroactive queue** that allow
 
 - **Run it**:
 
-  - `python FullRetroactivityNoPersistenceQueue.py`
+  - `python3 FullRetroactivityNoPersistenceQueue.py`
