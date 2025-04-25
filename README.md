@@ -657,7 +657,7 @@ Final result: [10, 15, 25, 20, 35, 30, 40]
 
 - Refactor merge_versions() to:
 
-  - Properly merge operations in correct chronological order.
+  - Properly merge operations in the correct chronological order.
 
   - Avoid duplicates and restore queue semantics.
 
@@ -665,19 +665,19 @@ Final result: [10, 15, 25, 20, 35, 30, 40]
 
 - Separate mod merging from pointer management for clarity.
 
-- Introduce unit tests to validate correctness of versions and merge output.
+- Introduce unit tests to validate the correctness of versions and merge output.
 
 ## **(Some) Challenges Faced**
-**In no particular order we found it difficult to:**
-- Updating the pointers  efficiently and correctly
-- Keep track of every update without taking space and time
+**In no particular order, we found it difficult to:**
+- Update the pointers  efficiently and correctly
+- Keep track of every update without taking up space and time
 - Shuffle between versions and timestamps
-- Adapting Persistence and Retroactive data structures to the use case
+- Adapt Persistence and Retroactive data structures to the use case
 
-We acknowledge the limited assistance of **ChatGPT** for helping with quick access to docs, minor debugging, and structuring a few parts of the project better.
+In this sense, we acknowledge and appreciate the limited assistance of ChatGPT, restricted to quick access to documentation, minor debugging, and improving the structure of a few sections in the project.
 
 ## **License**
 
 This project is open-source and provided for educational purposes. You are welcome to participate and collaborate with us to improve this!
 
-(Credits are appreciated ^-^)
+(Credits are appreciated and encouraged ^-^)
